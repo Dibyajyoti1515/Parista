@@ -1,0 +1,23 @@
+# Workplace Gaslighting vs Legitimate Feedback
+
+Source: The term "gaslighting" originates from the 1938 play Gas Light, later adopted into psychological literature on manipulation and coercive control (research and clinical use expanding through the 1980s–2000s); workplace-specific application draws on organizational psychology research into manipulation and abusive supervision (2000s–2010s)
+
+Gaslighting describes a pattern where someone consistently denies, contradicts, or distorts another person's experience or perception of events, to the point where the person on the receiving end starts doubting their own judgment, memory, or sense of reality. The term originally comes from a play in which a husband manipulates his wife into believing she's losing her mind by secretly altering her environment and denying it when she notices. In workplace settings, this pattern can show up as a manager or colleague repeatedly denying things that were said or agreed to, reframing a person's legitimate concerns as oversensitivity or incompetence, or consistently insisting a person's account of an event is wrong in ways that don't match other evidence or witnesses.
+
+What makes this pattern important to distinguish clearly is that legitimate, even harsh, feedback can sometimes feel similarly disorienting, especially to someone unused to direct criticism — but the two are fundamentally different in structure. Legitimate feedback, even when delivered bluntly, is generally specific, consistent, and tied to observable behavior or outcomes; it can be uncomfortable to hear without being manipulative. Gaslighting, by contrast, isn't really about the content of the feedback at all — it's a pattern of undermining someone's basic trust in their own perception of events, often inconsistently, in ways that shift depending on what's convenient in the moment. A manager who says "your report had three factual errors, here's what to fix" is giving direct feedback, even if it stings. A manager who denies having approved a decision they clearly approved, or who tells someone repeatedly that they're "too sensitive" or "remembering it wrong" without any supporting evidence, is engaging in a different kind of pattern entirely.
+
+The distinction matters because conflating the two can cause real harm in both directions: dismissing genuine manipulation as "just tough feedback" can leave someone doubting a pattern that's actually damaging their wellbeing and judgment, while labeling all uncomfortable feedback as gaslighting can make it harder to receive legitimate, useful criticism and can inflate ordinary workplace friction into something it isn't.
+
+## Recognizing the pattern
+
+- A pattern of denying specific statements, agreements, or events that others can independently confirm happened
+- Concerns being consistently reframed as personal flaws ("you're too sensitive," "you're overreacting") rather than addressed on their substance
+- A growing, persistent sense of self-doubt about one's own memory, judgment, or perception specifically in interactions with one person
+- Feedback that shifts depending on the situation, rather than being consistent and tied to specific, observable behavior
+- Feeling consistently confused or destabilized after conversations with a particular person, in a way that doesn't happen in interactions with others
+
+## Why this matters for conflict
+
+In workplace and HR conflicts, correctly distinguishing gaslighting from legitimate feedback matters because the appropriate response is completely different for each. Legitimate feedback, however uncomfortable, calls for engaging with its substance — understanding the specific concern and adjusting accordingly. A pattern of gaslighting calls for something else entirely: documenting events as they happen, seeking outside perspective or witnesses, and often involving HR or another neutral party, since the pattern specifically relies on isolating a person's trust in their own perception.
+
+Recognizing the difference gives people a clearer basis for evaluating their own workplace experience without immediately assuming either extreme — that all criticism is manipulation, or that persistent self-doubt in a specific relationship must simply be a personal shortcoming. If a pattern of denial, inconsistency, and reframing keeps recurring specifically with one person, and specifically produces growing self-doubt rather than clear, actionable understanding, that's a meaningfully different situation than receiving direct, if difficult, feedback — and it generally calls for outside support and documentation rather than simply trying to "take the criticism better."
