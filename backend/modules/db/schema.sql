@@ -4,15 +4,29 @@
 -- Enable pgvector extension for the knowledge base embeddings
 create extension if not exists vector;
 
--- Users (Telegram or web frontend)
+-- Users — supports three access modes:
+--   1. Telegram bot            -> telegram_id (persistent, from Telegram)
+--   2. Web app without login   -> web_session_id (ephemeral, anonymous session)
+--   3. Web app with login      -> email + auth_provider (persistent account via
+--                                 Supabase Auth)
+--
+-- If we adopt Supabase's built-in auth (auth.users), this table can reference
+-- it as a foreign key. If we handle auth manually, this remains a standalone
+-- table. The FK reference is commented out so we can decide later without
+-- blocking current progress:
+--   user_id uuid references auth.users(id) on delete cascade,
 create table if not exists users (
     id uuid primary key default gen_random_uuid(),
     telegram_id text unique,
     web_session_id text unique,
+    email text unique,
+    auth_provider text check (auth_provider in ('telegram', 'anonymous', 'email', 'google', 'github')),
+    display_name text,
+    last_login_at timestamptz,
     created_at timestamptz not null default now(),
-    -- At least one of telegram_id or web_session_id must be set
+    -- A user is valid if ANY of telegram_id, web_session_id, or email is set
     constraint users_identifier_check check (
-        telegram_id is not null or web_session_id is not null
+        telegram_id is not null or web_session_id is not null or email is not null
     )
 );
 
