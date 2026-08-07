@@ -13,7 +13,7 @@ from backend.modules.embeddings import get_embedding
 logger = get_logger("vector_search")
 
 # Confidence threshold per the constitution: >=0.75 answers from the core KB.
-CONFIDENCE_THRESHOLD = 0.75
+CONFIDENCE_THRESHOLD = 0.65
 
 
 class VectorSearchResult:

@@ -14,8 +14,8 @@ from backend.modules.chat.logging import get_logger
 
 # Model routing per the constitution: Gemini for quality-sensitive steps,
 # a lighter/faster model for routine rephrasing.
-QUALITY_MODEL = "gemini-2.0-flash"
-LIGHT_MODEL = "gemini-2.0-flash-lite"
+QUALITY_MODEL = "gemini-2.5-flash"
+LIGHT_MODEL = "gemini-2.5-flash-lite"
 
 
 class BaseAgent:
