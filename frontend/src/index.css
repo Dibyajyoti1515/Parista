@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-pink-accent: #ec4899;
+  --color-rose-accent: #f43f5e;
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Base */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Grain / noise texture overlay */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Twinkle animation for background hearts */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+
+/* Gentle float for background hearts */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Soft pulse for the 3D heart glow */
+@keyframes heart-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 40px rgba(236, 72, 153, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 70px rgba(244, 63, 94, 0.55));
+  }
+}
+
+/* Realistic heartbeat double-pulse for the 3D heart (lub-dub) */
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.04);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.07);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.3s ease-in-out infinite;
+}
+
+/* Bloom: soft radial light burst radiating outward from the heart.
+   Full cycle is 10s; the bloom fires in the first ~1.8s (18%) then
+   holds invisible until the next cycle. Uses transform/opacity only. */
+@keyframes bloom {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  18% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.animate-bloom {
+  animation: bloom 10s ease-out infinite;
+}
+
+/* Second bloom layer, offset ~180ms for a richer, softer effect */
+.animate-bloom-delayed {
+  animation: bloom 10s ease-out 0.18s infinite;
+}
+
+/* Mini heart particles bursting outward during the bloom.
+   Uses CSS custom properties for per-particle trajectory.
+   Fires once per 10s cycle, in sync with the bloom glow. */
+@keyframes heart-burst {
+  0% {
+    opacity: 0.8;
+    transform: scale(0);
+  }
+  18% {
+    opacity: 0;
+    transform: scale(1) translate(var(--burst-x), var(--burst-y)) rotate(var(--burst-rot));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translate(var(--burst-x), var(--burst-y)) rotate(var(--burst-rot));
+  }
+}
+
+/* Independent float for the two info cards (different durations) */
+@keyframes card-float-a {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes card-float-b {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-card-float-a {
+  animation: card-float-a 5s ease-in-out infinite;
+}
+
+.animate-card-float-b {
+  animation: card-float-b 6.5s ease-in-out infinite;
+}
+
+/* Fade-up entrance */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-heart-glow {
+  animation: heart-glow 4s ease-in-out infinite;
+}
+
+/* Gradient border utility for glass cards */
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+    linear-gradient(135deg, rgba(236, 72, 153, 0.5), rgba(255, 255, 255, 0.08) 40%, rgba(236, 72, 153, 0.2)) border-box;
+}
+
+/* Animated underline for secondary CTA */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0.4);
+  transform-origin: left;
+  opacity: 0.4;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Respect prefers-reduced-motion: simplify/disable animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
