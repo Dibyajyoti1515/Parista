@@ -67,3 +67,31 @@ create table if not exists paper_cache (
     source_url text,
     fetched_at timestamptz not null default now()
 );
+
+-- RPC function for pgvector similarity search (used by vector_search_tool)
+create or replace function match_psychology_kb_chunks(
+    query_embedding vector(768),
+    match_count int default 5
+)
+returns table (
+    id uuid,
+    source_title text,
+    framework_name text,
+    content text,
+    similarity float
+)
+language plpgsql
+as $$
+begin
+    return query
+    select
+        psychology_kb_chunks.id,
+        psychology_kb_chunks.source_title,
+        psychology_kb_chunks.framework_name,
+        psychology_kb_chunks.content,
+        1 - (psychology_kb_chunks.embedding <=> query_embedding) as similarity
+    from psychology_kb_chunks
+    order by psychology_kb_chunks.embedding <=> query_embedding
+    limit match_count;
+end;
+$$;
